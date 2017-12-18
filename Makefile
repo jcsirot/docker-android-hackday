@@ -13,8 +13,10 @@ uninstall:
 	@echo "Uninstalling previous apk"
 	adb uninstall com.docker.android
 
-install: uninstall
+install:
 	@echo "Installing apk..."
 	adb install android/app/build/outputs/apk/main-debug.apk
+
+reinstall: uninstall install
 
 all: build

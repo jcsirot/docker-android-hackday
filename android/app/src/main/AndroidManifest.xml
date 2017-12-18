@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2015 The Go Authors. All rights reserved.
-     Use of this source code is governed by a BSD-style
-     license that can be found in the LICENSE file.  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.golang.example.bind" >
+    package="com.docker.android">
 
     <application
         android:allowBackup="true"
-        android:label="GoBindExample">
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="GoBindExample" >
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TermActivity"></activity>
     </application>
 
 </manifest>

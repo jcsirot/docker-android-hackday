@@ -1,3 +1,0 @@
-include ':emulatorview', ':main'
-project(':main').projectDir = new File('app')
-project(':emulatorview').projectDir = new File('emulatorview')

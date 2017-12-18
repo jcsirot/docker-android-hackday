@@ -11,10 +11,10 @@ build: build-image build-apk
 
 uninstall:
 	@echo "Uninstalling previous apk"
-	adb uninstall org.golang.example.android
+	adb uninstall com.docker.android
 
 install: uninstall
 	@echo "Installing apk..."
-	adb install android/app/build/outputs/apk/app-debug.apk
+	adb install android/app/build/outputs/apk/main-debug.apk
 
 all: build

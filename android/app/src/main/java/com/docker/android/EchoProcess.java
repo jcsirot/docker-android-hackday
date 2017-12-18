@@ -1,5 +1,6 @@
 package com.docker.android;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,6 +29,7 @@ public class EchoProcess implements Runnable {
 
     @Override
     public void run() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             byte[] buf = new byte[1024];
             while (true) {
@@ -35,10 +37,22 @@ public class EchoProcess implements Runnable {
                 if (n <= 0) {
                     return;
                 }
-                String s = new String(buf, StandardCharsets.UTF_8);
-                String greetings = Cli.greetings(s);
-                outFromIn.write(greetings.getBytes(StandardCharsets.UTF_8));
-                outFromIn.flush();
+                for (int i = 0; i < n; i++) {
+                  if (buf[i] == '\n' ||  buf[i] == '\r') {
+                    outFromIn.write('\r');
+                    outFromIn.write('\n');
+                    outFromIn.flush();
+                    String s = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+                    baos.reset();
+                    String greetings = Cli.greetings(s);
+                    outFromIn.write(greetings.getBytes(StandardCharsets.UTF_8));
+                    outFromIn.flush();
+                  } else {
+                    baos.write(buf[i]);
+                    outFromIn.write(buf[i]);
+                    outFromIn.flush();
+                  }
+                }
             }
         } catch (IOException ioe) {
             // Log some stuff... FIXME

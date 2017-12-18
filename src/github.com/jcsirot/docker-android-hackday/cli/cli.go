@@ -8,5 +8,5 @@ package cli
 import "fmt"
 
 func Greetings(name string) string {
-	return fmt.Sprintf("Docker is great, %s!", name)
+	return fmt.Sprintf("Docker is great, %s!\r\n", name)
 }

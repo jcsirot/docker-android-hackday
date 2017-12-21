@@ -2,7 +2,7 @@ package com.docker.android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button fab = (Button) findViewById(R.id.button);
+        ImageButton fab = (ImageButton) findViewById(R.id.button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

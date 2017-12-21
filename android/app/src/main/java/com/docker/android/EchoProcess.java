@@ -44,7 +44,7 @@ public class EchoProcess implements Runnable {
                     outFromIn.flush();
                     String s = new String(baos.toByteArray(), StandardCharsets.UTF_8);
                     baos.reset();
-                    String greetings = Cli.greetings(s);
+                    String greetings = Cli.version();
                     outFromIn.write(greetings.getBytes(StandardCharsets.UTF_8));
                     outFromIn.flush();
                   } else {
